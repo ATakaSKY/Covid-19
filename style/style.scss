@@ -1,0 +1,375 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: "Special Elite", cursive, Arial, Helvetica, sans-serif;
+  // width: 800px;
+  // margin: 0 auto;
+  // padding: 30px;
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "left-section mid-section right-section";
+  // "footer footer footer";
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 18rem 1fr 18rem;
+  height: 100vh;
+  position: relative;
+}
+
+h2 {
+  color: #fff;
+  font-size: 1.8rem;
+}
+
+header {
+  grid-area: header;
+  background: #5f4114c7;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.left-section {
+  background: #080c0cf2;
+  grid-area: left-section;
+  padding: 1.3rem;
+  position: relative;
+
+  h2 {
+    font-size: 2.3rem;
+  }
+
+  .stats-global {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1.3rem;
+    height: 96%;
+    align-items: center;
+    .card {
+      flex-direction: column;
+      display: flex;
+      span {
+        font-weight: bold;
+        font-size: 2.2rem;
+        font-family: "Montserrat", sans-serif;
+      }
+      label {
+        color: #fff;
+        font-size: 2rem;
+      }
+
+      .confirmed {
+        color: #3f51b5;
+      }
+
+      .green {
+        color: green;
+      }
+
+      .red {
+        color: #d02f2f;
+      }
+    }
+  }
+}
+
+.mid-section {
+  grid-area: mid-section;
+  overflow-y: scroll;
+  position: relative;
+
+  .mid-sect-controls {
+    display: flex;
+    padding: 1.3rem 2.5rem;
+    justify-content: space-between;
+
+    #datepicker {
+      display: flex;
+
+      .date-controls {
+        display: flex;
+        align-items: center;
+        margin-right: 0.7rem;
+        background: #ccc;
+
+        input {
+          outline: none;
+          // padding: 10px;
+          border: none;
+          background: #ccc;
+          font-size: 1rem;
+
+          &.end {
+            padding: 10px 0 10px 10px;
+          }
+
+          &.start {
+            text-align: right;
+            padding: 10px 10px 10px 0;
+          }
+        }
+      }
+
+      button {
+        padding: 0 20px;
+        outline: none;
+        font-size: 1rem;
+        border: none;
+        background: #5f4114c7;
+        color: #fff5f5;
+        border-radius: 16px;
+
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+    }
+
+    .region-dropdown {
+      align-self: center;
+      width: 16rem;
+
+      #region {
+        font-size: 1.5rem;
+        outline: none;
+        width: 100%;
+      }
+    }
+  }
+
+  .charts {
+    & > div {
+      display: none;
+      overflow: hidden;
+      margin: 10px;
+      box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.5);
+      border: 1px solid #ccc;
+    }
+  }
+}
+
+.right-section {
+  background: #080c0cf2;
+  grid-area: right-section;
+  padding: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .stats-country-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1.3rem;
+    height: 100%;
+    align-items: center;
+
+    .no-data {
+      color: #fff !important;
+    }
+
+    .card {
+      flex-direction: column;
+      display: flex;
+      font-size: 3rem;
+      span {
+        font-weight: bold;
+        font-size: 2.2rem;
+        font-family: "Montserrat", sans-serif;
+      }
+      label {
+        color: #fff;
+        font-size: 2rem;
+      }
+
+      .confirmed {
+        color: #3f51b5;
+      }
+
+      .green {
+        color: green;
+      }
+
+      .red {
+        color: #d02f2f;
+      }
+    }
+  }
+
+  .countries {
+    select {
+      margin-top: 10px;
+      outline: none;
+    }
+  }
+}
+
+.abort-btn {
+  z-index: 100;
+  position: absolute;
+  top: 47%;
+  left: 40%;
+  font-size: 1.3rem;
+  background: transparent;
+  border: none;
+  color: #1e4153;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+  pointer-events: all;
+  display: none;
+
+  &:active,
+  &:focus,
+  &:visited {
+    outline: none;
+  }
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.countries {
+  flex-direction: column;
+  display: flex;
+  select {
+    width: 85%;
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+}
+
+.loading {
+  display: block;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  width: 40px;
+  height: 40px;
+  border-style: solid;
+  border-color: rgb(173, 81, 81);
+  border-top-color: transparent;
+  border-width: 4px;
+  border-radius: 50%;
+  -webkit-animation: spin 0.8s linear infinite;
+  animation: spin 0.8s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.highcharts-credits {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  body {
+    display: block;
+  }
+
+  .left-section {
+    padding: 3rem;
+    h2 {
+      margin-bottom: 3rem;
+    }
+
+    .stats-global {
+      grid-gap: 2.5rem;
+    }
+  }
+
+  .right-section {
+    padding: 3rem;
+
+    .countries {
+      select {
+        background: #fff;
+      }
+    }
+
+    .stats-country-container {
+      margin-top: 3.5rem;
+      grid-gap: 3rem;
+    }
+  }
+
+  .mid-section {
+    min-height: 300px;
+    .mid-sect-controls {
+      display: block;
+      padding: 3.5rem 2.5rem;
+
+      .region-dropdown {
+        width: 100%;
+
+        #region {
+          border: 1px solid #ccc;
+        }
+      }
+
+      #datepicker {
+        display: block;
+        margin-bottom: 1rem;
+
+        button {
+          margin-top: 0.8rem;
+          width: 100%;
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+        }
+
+        .date-controls {
+          display: flex;
+          width: 100%;
+
+          input {
+            font-size: 11px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  .abort-btn {
+    left: 30%;
+    top: 80%;
+    font-size: 1rem;
+  }
+
+  .loading {
+    top: 62%;
+    left: 43%;
+  }
+}

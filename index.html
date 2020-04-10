@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/js-datepicker/dist/datepicker.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style/style.css" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <a
+        target="_blank"
+        href="https://www.who.int/health-topics/coronavirus#tab=tab_1"
+        >COVID-19</a
+      >
+    </header>
+
+    <section class="left-section">
+      <h2>Globally</h2>
+      <div class="stats-global"></div>
+    </section>
+
+    <section class="mid-section">
+      <div class="mid-sect-controls">
+        <div id="datepicker">
+          <div class="date-controls">
+            <input type="text" class="start" />
+            <span>-</span>
+            <input type="text" class="end" />
+          </div>
+
+          <button id="date-range-btn">Get data</button>
+        </div>
+        <div class="region-dropdown">
+          <select name="" id="region"> </select>
+        </div>
+      </div>
+
+      <div class="charts">
+        <div class="graph-container"></div>
+        <div class="pie-chart-container"></div>
+      </div>
+
+      <button class="abort-btn">
+        Cancel request
+      </button>
+    </section>
+
+    <section class="right-section">
+      <div class="countries"></div>
+
+      <div class="stats-country-container"></div>
+    </section>
+
+    <script src="assets/scripts/f094cc67acc6d127d351.js"></script>
+  </body>
+</html>
