@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@material-ui/core": "^4.9.5",
-    "highcharts": "^8.0.4",
+    "highcharts": "^9.0.0",
     "js-datepicker": "^5.4.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0"
